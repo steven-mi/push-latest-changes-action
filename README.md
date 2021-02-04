@@ -1,7 +1,5 @@
 # Push Latest Changes Action
-This action pushes the latest changes from one repository to another. You can:
-- select the branch
-- ignore files
+This action pushes the latest changes from one repository to another.
 
 ## Example usage
 
