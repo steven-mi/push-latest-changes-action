@@ -48,4 +48,4 @@ git config --global user.email "${GITHUB_REPOSITORY}@push-latest-changes-action"
 git config --global user.name "${GITHUB_REPOSITORY}"
 git add -A
 git commit -m "Latest changes from ${GITHUB_REPOSITORY}"
-git push origin ${BRANCH} ${_GIT_OPTION}
+git push origin "${BRANCH} ${_GIT_OPTION}"
