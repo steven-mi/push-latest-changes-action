@@ -27,7 +27,8 @@ git config --global user.email "${GITHUB_REPOSITORY}@push-latest-changes-action"
 git config --global user.name "${GITHUB_REPOSITORY}"
 
 echo "clone target repository"
-git clone "https://${GITHUB_REPOSITORY_OWNER}:${TOKEN}@github.com/${GITHUB_REPOSITORY_OWNER}/${REPOSITORY}.git"
+URL="https://${GITHUB_REPOSITORY_OWNER}:${TOKEN}@github.com/${GITHUB_REPOSITORY_OWNER}/${REPOSITORY}.git"
+git clone ${URL}
 cd ${REPOSITORY}
 
 echo "get latest changes and change branches"
@@ -46,11 +47,12 @@ do
 done
 
 echo "copy files"
-rsync -a ${_EXCLUDE_OPTION} ${SOURCE_REPOSITORY} "./${DIRECTORY}"
+rsync -a ${_EXCLUDE_OPTION} ${SOURCE_REPOSITORY}/* ./${DIRECTORY}
 
 echo "create commit"
 git add -A
 git commit -m "Latest changes from ${GITHUB_REPOSITORY}"
 
 echo "push to repository"
+git remote set-url origin ${URL}
 git push origin ${BRANCH} ${_GIT_OPTION}
