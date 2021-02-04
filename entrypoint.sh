@@ -2,11 +2,10 @@
 
 TOKEN=$1
 REPOSITORY=$2
-OWNER=$3
-BRANCH=$4
-FORCE=$5
-DIRECTORY=$6
-IGNORE=$7
+BRANCH=$3
+FORCE=$4
+DIRECTORY=$5
+IGNORE=$6
 
 echo "setup git options";
 _GIT_OPTION=''
@@ -23,7 +22,7 @@ cd ..
 
 # SETUP TARGET REPOSITORY
 echo "clone target repository"
-git clone "https://${TOKEN}@github.com/${OWNER}/${REPOSITORY}.git"
+git clone "https://${GITHUB_ACTOR}:${TOKEN}@github.com/${REPOSITORY}.git"
 cd ${REPOSITORY}
 
 echo "get latest changes and change branches"
@@ -45,6 +44,8 @@ echo "copy files"
 rsync -a ${_EXCLUDE_OPTION} ${SOURCE_REPOSITORY} "./${DIRECTORY}"
 
 echo "create commit"
+git config --global user.email "${GITHUB_REPOSITORY}@push-latest-changes-action"
+git config --global user.name "${GITHUB_REPOSITORY}"
 git add -A
-git commit -m "Latest changes from ${OWNER}/${REPOSITORY}"
+git commit -m "Latest changes from ${GITHUB_REPOSITORY}"
 git push origin ${BRANCH}

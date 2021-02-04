@@ -9,9 +9,6 @@ inputs:
   repository: 
     description: 'Destination repisitory to push changes'
     required: true
-  owner: 
-    description: 'Determines the owner of the repository'
-    required: true
   branch: 
     description: 'Branch to push changes to (default: main)'
     required: false
@@ -34,7 +31,6 @@ runs:
   args:
     - ${{ inputs.github-token }}
     - ${{ inputs.repository }}
-    - ${{ inputs.owner }}
     - ${{ inputs.branch }}
     - ${{ inputs.force }}
     - ${{ inputs.directory }}
