@@ -22,7 +22,7 @@ cd ..
 
 # SETUP TARGET REPOSITORY
 echo "clone target repository"
-git clone "https://${GITHUB_ACTOR}:${TOKEN}@github.com/${REPOSITORY}.git"
+git clone "https://${TOKEN}@github.com/${GITHUB_REPOSITORY_OWNER}/${REPOSITORY}.git"
 cd ${REPOSITORY}
 
 echo "get latest changes and change branches"
