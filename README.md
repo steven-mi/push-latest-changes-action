@@ -12,12 +12,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-      - uses: steven-mi/push-latest-changes-action@v0.1
+      - name: Push Latest Changes
+        uses: steven-mi/push-latest-changes-action@v0.1.3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          repository: test1
-          owner: steven-mi
+          github-token: ${{ secrets.GITHUB_TOKEN }} # Token for the repo
+          repository: test1 # Destination repisitory to push changes
+          owner: steven-mi # Determines the owner of the repository
+          branch: main # Branch to push changes to
+          force: false # Enable force push
+          directory: "." # A list of files to be ignored as a comma-separated string e.g. ".hallo,.bye"
+          ignore: ""
 ```
