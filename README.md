@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Push Latest Changes
-        uses: steven-mi/push-latest-changes-action@v1
+        uses: steven-mi/push-latest-changes-action@v1.0
         with:
           github-token: ${{ secrets.PAT }} # generated PAT token
           repository: test1 # Destination repisitory to push changes
