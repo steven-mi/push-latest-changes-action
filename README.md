@@ -19,7 +19,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }} # Token for the repo
           repository: test1 # Destination repisitory to push changes
-          owner: steven-mi # Determines the owner of the repository
           branch: main # Branch to push changes to
           force: false # Enable force push
           directory: "." # A list of files to be ignored as a comma-separated string e.g. ".hallo,.bye"
