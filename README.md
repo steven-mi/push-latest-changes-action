@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Push Latest Changes
-        uses: steven-mi/push-latest-changes-action@v0.1.3
+        uses: steven-mi/push-latest-changes-action@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }} # Token for the repo
           repository: test1 # Destination repisitory to push changes
