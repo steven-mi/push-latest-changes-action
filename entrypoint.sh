@@ -21,6 +21,11 @@ echo "switch to parent directory"
 cd ..
 
 # SETUP TARGET REPOSITORY
+echo "setup git config"
+git config --global credential.helper store
+git config --global user.email "${GITHUB_REPOSITORY}@push-latest-changes-action"
+git config --global user.name "${GITHUB_REPOSITORY}"
+
 echo "clone target repository"
 git clone "https://${GITHUB_REPOSITORY_OWNER}:${TOKEN}@github.com/${GITHUB_REPOSITORY_OWNER}/${REPOSITORY}.git"
 cd ${REPOSITORY}
@@ -44,8 +49,6 @@ echo "copy files"
 rsync -a ${_EXCLUDE_OPTION} ${SOURCE_REPOSITORY} "./${DIRECTORY}"
 
 echo "create commit"
-git config --global user.email "${GITHUB_REPOSITORY}@push-latest-changes-action"
-git config --global user.name "${GITHUB_REPOSITORY}"
 git add -A
 git commit -m "Latest changes from ${GITHUB_REPOSITORY}"
 
