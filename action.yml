@@ -1,0 +1,44 @@
+# action.yml
+name: 'Push Latest Changes'
+description: 'Push the latest changes from one repository to another'
+author: 'steven-mi'
+inputs:
+  github-token:
+    description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}'
+    required: true
+  repository: 
+    description: 'Destination repisitory to push changes'
+    required: true
+  owner: 
+    description: 'Determines the owner of the repository'
+    required: true
+  branch: 
+    description: 'Branch to push changes to (default: main)'
+    required: false
+    default: 'main'
+  force:
+    description: 'Enable force push (default: false)'
+    required: false
+    default: false
+  directory:
+    description: 'Directory to push changes to (default: ".")'
+    required: false
+    default: '.'
+  ignore:
+    description: 'A list of files to be ignored as a comma-separated string (default: "")'
+    required: false
+    default: ''
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.github-token }}
+    - ${{ inputs.repository }}
+    - ${{ inputs.owner }}
+    - ${{ inputs.branch }}
+    - ${{ inputs.force }}
+    - ${{ inputs.directory }}
+    - ${{ inputs.ignore }}
+branding:
+  icon: 'git-commit'
+  color: 'green'
