@@ -8,9 +8,9 @@ DIRECTORY=$5
 IGNORE=$6
 
 echo "setup git options";
-_GIT_OPTION=''
+_GIT_OPTION=""
 if ${INPUT_FORCE}; then
-    _GIT_OPTION='${_GIT_OPTION} --force'
+    _GIT_OPTION="${_GIT_OPTION} --force"
 fi
 
 # SETUP SOURCE REPOSITORY
