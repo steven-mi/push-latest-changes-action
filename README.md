@@ -2,7 +2,7 @@
 With this simple GitHub action, you can easily push the latest changes from one repository to the other. Furthermore, you can ignore certain files, allowing open sourcing of projects without sharing the credentials.
 
 ## Getting Started
-First generate a personal access token by going to your **Developer settings**. Afterward create a GitHub Action with following content:
+First generate a personal access token by going to your **Developer settings**. Next, add your PAT as a secret to your repository and create a GitHub action with the following content:
 
 ```
 name: Push Latest Changes 
@@ -25,6 +25,8 @@ jobs:
           directory: "." # A list of files to be ignored as a comma-separated string e.g. ".hallo,.bye"
           ignore: ""
 ```
+
+**Note:** Make sure that your PAT allows write access to your repository
 
 ## License
 Apache License 2.0 see [LICENSE](LICENSE)
