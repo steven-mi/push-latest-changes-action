@@ -50,7 +50,7 @@ rsync -a ${_EXCLUDE_OPTION} ${SOURCE_REPOSITORY}/* ./${DIRECTORY}
 
 echo "create commit"
 git add -A
-git commit -m "Latest changes from ${GITHUB_REPOSITORY}"
+git commit -m "Latest changes from ${GITHUB_REPOSITORY} from ${BRANCH} branch"
 
 echo "push to repository"
 git remote set-url origin "https://${GITHUB_REPOSITORY_OWNER}:${TOKEN}@github.com/${GITHUB_REPOSITORY_OWNER}/${REPOSITORY}.git"
