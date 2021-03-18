@@ -22,8 +22,8 @@ jobs:
           repository: test1 # Destination repisitory to push changes
           branch: main # Branch to push changes to
           force: false # Enable force push
-          directory: "." # A list of files to be ignored as a comma-separated string e.g. ".hallo,.bye"
-          ignore: ""
+          directory: "." # Directory to push changes to
+          ignore: "" # A list of files to be ignored as a comma-separated string e.g. ".hallo,.bye"
 ```
 
 **Note:** Make sure that your PAT allows write access to your repository
